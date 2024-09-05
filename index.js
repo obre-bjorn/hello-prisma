@@ -24,7 +24,22 @@ async function main(){
         include: {
             posts: true, // All posts where authorId == 20
         },
-});
+    });
+
+    const updateAuthor = await prisma.user.update({
+        where: {
+            id: 20,
+        },
+        data: {
+            posts: {
+            connect: {
+                id: 4,
+            },
+            },
+        },
+        })
+
+        
     console.log(allUsers)
 }
 
